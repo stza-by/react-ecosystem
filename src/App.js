@@ -11,11 +11,6 @@ import NotFound from "./not-found/NotFound";
 
 import './common.scss';
 
-const todos = [
-    {id: 1, label: 'drink coffee'},
-    {id: 2, label: 'drink tea'},
-]
-
 const App = () => {
     return (
         <div className='app-container'>
@@ -23,7 +18,7 @@ const App = () => {
                 <Switch>
 
                     <Route path='/' exact>
-                        <TodoList todos={todos}/>
+                        <TodoList />
                     </Route>
 
                     <Route path='/face' exact>

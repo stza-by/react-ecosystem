@@ -1,7 +1,71 @@
 
 .todo-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  margin: auto;
 
-  .todo-list-item {
+  .new-todo-form {
+    display: flex;
+    height: 4rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+
+    .new-todo-input {
+      flex: 1;
+      font-size: 1.8rem;
+      border: none;
+      outline: none;
+    }
+
+    button {
+      background-color: white;
+      cursor: pointer;
+      border: none;
+      margin-left: 1rem;
+    }
+
+    img {
+      width: 32px;
+    }
+  }
+
+  .todo-list {
+    width: 100%;
+  }
+
+  .todo-list-item-container {
+    width: 100%;
+    box-shadow: 0 4px 8px grey;
+    padding: 1rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .button-container {
+      height: 4.5rem;
+
+      button {
+        height: 4.5rem;
+        background-color: white;
+        cursor: pointer;
+        padding: 0.5rem;
+        margin-left: 1rem;
+        border: 1px solid white;
+        outline: none;
+
+        &:hover {
+          border: 1px solid black;
+        }
+      }
+
+      img {
+        width: 32px;
+      }
+
+    }
 
   }
 
