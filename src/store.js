@@ -1,18 +1,15 @@
-import {createStore, combineReducers} from "redux";
+import {createStore, combineReducers, applyMiddleware} from "redux";
+import thunk from "redux-thunk";
+import {composeWithDevTools} from "redux-devtools-extension";
 import {todos} from "./todos/reducer";
-import {APP_MODE} from "./utils/constants";
 
 const reducers = {todos};
 
 const rootReducer = combineReducers(reducers);
 
-const configureStore = (mode) => createStore(
+const configureStore = () => createStore(
     rootReducer,
-    mode === APP_MODE.DEV ? (
-        window.__REDUX_DEVTOOLS_EXTENSION__ &&
-        window.__REDUX_DEVTOOLS_EXTENSION__()
-    ) : null
+    composeWithDevTools(applyMiddleware(thunk)),
 )
 
 export default configureStore;
-
