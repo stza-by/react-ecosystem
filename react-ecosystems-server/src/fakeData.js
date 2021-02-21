@@ -51,9 +51,9 @@ const editTodo = (id, todo) => {
 const deleteTodo = (id) => {
     const todoIndex = fakeTodos.findIndex((todo) => todo.id === id);
 
-    if(!todoIndex) return null;
+    if(!todoIndex < 0) return null;
 
-    return fakeTodos.splice(todoIndex, 1);
+    return fakeTodos.splice(todoIndex, 1)[0];
 }
 
 export {

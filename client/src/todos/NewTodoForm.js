@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
-import {createTodo} from "./actions";
+import {addTodoRequest} from "./actions";
 import {ENTER_BUTTON_KEY} from "../utils/constants";
 
 const NewTodoForm = ({createTodo}) => {
@@ -42,7 +42,8 @@ const NewTodoForm = ({createTodo}) => {
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
-    createTodo: text => dispatch(createTodo(text))
+    createTodo: text => dispatch(addTodoRequest(text)),
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewTodoForm);

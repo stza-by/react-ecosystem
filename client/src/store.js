@@ -1,9 +1,12 @@
 import {createStore, combineReducers, applyMiddleware} from "redux";
 import thunk from "redux-thunk";
 import {composeWithDevTools} from "redux-devtools-extension";
-import {todos} from "./todos/reducer";
+import {todos, isLoading } from "./todos/reducer";
 
-const reducers = {todos};
+const reducers = {
+    todos,
+    isLoading,
+};
 
 const rootReducer = combineReducers(reducers);
 
