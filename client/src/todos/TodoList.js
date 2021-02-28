@@ -3,6 +3,11 @@ import {connect} from 'react-redux';
 import NewTodoForm from "./NewTodoForm";
 import TodoListItem from './TodoListItem';
 import {
+    getIsTodosLoading,
+    getCompletedTodos,
+    getIncompleteTodos,
+} from "./selectors";
+import {
     loadTodos,
     deleteTodoRequest,
     completeTodoRequest,
@@ -18,9 +23,9 @@ const loadingMessage = (
 );
 
 const TodoList = (props) => {
-
     const {
-        todos,
+        completedTodos,
+        incompletedTodos,
         loadTodos,
         removeTodo,
         completeTodo,
@@ -40,39 +45,37 @@ const TodoList = (props) => {
             <div className='todo-list'>
 
                 <div className='uncompleted-list'>
-                    {todos
-                        .filter(todo => !todo.isCompleted)
-                        .map(todo =>
-                            <TodoListItem
-                                key={todo.id}
-                                todo={todo}
-                                removeListItem={removeTodo}
-                                completeTodo={completeTodo}
-                            />
-                        )}
+                    <h2>Incomplete:</h2>
+                    {incompletedTodos.map(todo =>
+                        <TodoListItem
+                            key={todo.id}
+                            todo={todo}
+                            removeListItem={removeTodo}
+                            completeTodo={completeTodo}
+                        />
+                    )}
                 </div>
 
                 <div className='completed-list'>
-                    {todos
-                        .filter(todo => todo.isCompleted)
-                        .map(todo =>
-                            <TodoListItem
-                                key={todo.id}
-                                todo={todo}
-                                removeListItem={removeTodo}
-                                uncompleteTodo={uncompleteTodo}
-                            />
-                        )}
+                    <h2>Completed:</h2>
+                    {completedTodos.map(todo =>
+                        <TodoListItem
+                            key={todo.id}
+                            todo={todo}
+                            removeListItem={removeTodo}
+                            uncompleteTodo={uncompleteTodo}
+                        />
+                    )}
                 </div>
-
             </div>
         </div>
     )
 }
 
 const mapStateToProps = state => ({
-    todos: state.todos,
-    isLoading: state.isLoading,
+    completedTodos: getCompletedTodos(state),
+    incompletedTodos: getIncompleteTodos(state),
+    isLoading: getIsTodosLoading(state),
 });
 
 const mapDispatchToProps = dispatch => ({
